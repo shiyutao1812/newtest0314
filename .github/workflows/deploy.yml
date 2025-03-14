@@ -1,12 +1,4 @@
 name: Auto Deploy to Server
-run: |
-    # 显示调试信息
-    echo "尝试连接到服务器..."
-    ssh -vvv -o StrictHostKeyChecking=no \
-        ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} \
-        "echo '连接成功！'"
-    # 检查公钥是否加载
-    ssh-add -L
 on:
   push:
     branches: [ master ]  # 监听 main 分支的推送
