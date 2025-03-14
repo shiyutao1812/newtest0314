@@ -9,10 +9,10 @@ jobs:
     steps:
       - name: 测试变量
         run: |
-            echo "SERVER_IP: ${{ secrets.SERVER_IP }}"
-            echo "SERVER_USER: ${{ secrets.SERVER_USER }}"
-            # 确保以下路径的私钥存在s
-            ls -la ~/.ssh/
+            if [ -z "${{ secrets.SERVER_IP }}" ]; then
+                echo "ERROR: SERVER_IP is empty!"
+            else
+                echo "SERVER_IP is set (value is masked)."
 
       - name: Deploy to Server
         run: |
