@@ -1,5 +1,5 @@
 name: Auto Deploy to Server
- run: |
+run: |
     # 显示调试信息
     echo "尝试连接到服务器..."
     ssh -vvv -o StrictHostKeyChecking=no \
