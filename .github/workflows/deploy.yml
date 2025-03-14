@@ -11,7 +11,7 @@ jobs:
         run: |
             echo "SERVER_IP: ${{ secrets.SERVER_IP }}"
             echo "SERVER_USER: ${{ secrets.SERVER_USER }}"
-            # 确保以下路径的私钥存在
+            # 确保以下路径的私钥存在s
             ls -la ~/.ssh/
 
       - name: Deploy to Server
