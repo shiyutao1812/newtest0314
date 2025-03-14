@@ -7,6 +7,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: 测试变量
+        run: |
+            echo "SERVER_IP: ${{ secrets.SERVER_IP }}"
+            echo "SERVER_USER: ${{ secrets.SERVER_USER }}"
+            # 确保以下路径的私钥存在
+            ls -la ~/.ssh/
+
       - name: Deploy to Server
         run: |
          # 显示调试信息
