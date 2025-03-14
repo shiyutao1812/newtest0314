@@ -11,16 +11,9 @@ jobs:
       - name: 连接服务器并执行命令
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ 47.100.252.201 }}
-          username: ${{ root }}
-          key: ${{ -----BEGIN OPENSSH PRIVATE KEY-----
-              b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABA9FZoESA
-              Gf5n/zg1KwqU1+AAAAEAAAAAEAAAAzAAAAC3NzaC1lZDI1NTE5AAAAIEE2MaxadyzOLmAU
-              fPU1V09CoBeAkKaViiVwgm20WsXLAAAAoMJrDW9QUd/hJsF1zlI53LQWd0eqOUsi3v+GtC
-              6FPguP7MFKZ0lwgTCXkTOrZ+uDZukHwL2hxzVBVjN6vGMVKxyW0mDGUvKYKHDlVh0nkXmX
-              jAaIrPeNAuqL5Vj03PYu5x99/4PWxJsBTaYTf3hz1hwyJ+ArE6O2AbwcxUzKGuebd99Pwc
-              AVBqXIH+8A1ugflEwXFsTcBfzTdZi75/97OFw=
-              -----END OPENSSH PRIVATE KEY----- }}
+          host: ${{ secrets.SERVER_IP }}# 服务器的 IP 或域名
+          username: ${{ secrets.SERVER_USER }}# 服务器登录用户
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # 服务器 SSH 私钥内容
           script: |
             cd /www/wwwroot/test0309/think  # 修改为服务器上的项目路径
             git pull origin master      # 拉取最新代码
