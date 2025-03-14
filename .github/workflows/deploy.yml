@@ -1,0 +1,21 @@
+steps:
+  - name: 连接服务器并执行命令       # 步骤名称（可自定义）
+    uses: appleboy/ssh-action@master  # 使用第三方 Action（appleboy/ssh-action）通过 SSH 连接服务器
+    with:                            # 配置 SSH 连接参数
+      host: ${{ 47.100.252.201 }}      # 服务器的 IP 或域名（需在 GitHub Secrets 中配置）
+      username: ${{ root }}# 服务器登录用户（如 root，需在 Secrets 中配置）
+      key: ${{ -----BEGIN OPENSSH PRIVATE KEY-----
+  b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABA9FZoESA
+  Gf5n/zg1KwqU1+AAAAEAAAAAEAAAAzAAAAC3NzaC1lZDI1NTE5AAAAIEE2MaxadyzOLmAU
+  fPU1V09CoBeAkKaViiVwgm20WsXLAAAAoMJrDW9QUd/hJsF1zlI53LQWd0eqOUsi3v+GtC
+  6FPguP7MFKZ0lwgTCXkTOrZ+uDZukHwL2hxzVBVjN6vGMVKxyW0mDGUvKYKHDlVh0nkXmX
+  jAaIrPeNAuqL5Vj03PYu5x99/4PWxJsBTaYTf3hz1hwyJ+ArE6O2AbwcxUzKGuebd99Pwc
+  AVBqXIH+8A1ugflEwXFsTcBfzTdZi75/97OFw=
+  -----END OPENSSH PRIVATE KEY-----
+}} # 服务器 SSH 私钥内容（需在 Secrets 中配置）
+      script: |                       # 在服务器上执行的多行命令
+        cd /path/to/your/project       # 切换到服务器上的项目路径（需修改为实际路径）
+        git pull origin main           # 从 GitHub 拉取最新代码（若与当前分支同名可省略 origin main）
+        # 可选：执行构建命令（如 npm install、mvn package 等）
+        # npm install                  # 举例：安装 Node.js 依赖（取消注释后生效）
+        # npm run build                # 举例：构建项目（取消注释后生效）
