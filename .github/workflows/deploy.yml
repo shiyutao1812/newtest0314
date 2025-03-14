@@ -19,3 +19,13 @@ jobs:
             # 可选：执行构建命令（如 npm install、mvn package 等）
             # npm install
             # npm run build
+      - name: Deploy to Server
+        run: |
+         # 显示调试信息
+         echo "尝试连接到服务器..."
+         ssh -vvv -o StrictHostKeyChecking=no \
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} \
+            "echo '连接成功！'"
+         # 检查公钥是否加载
+         ssh-add -L
+
